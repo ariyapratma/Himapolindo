@@ -68,7 +68,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["role"] = $row["role"];
                 $_SESSION["loggedin"] = time(); // waktu login
 
-                $response = ['status' => 'success', 'message' => 'Login berhasil', 'username' => $row["username"], 'role' => $row["role"]];
+                // Memeriksa apakah pengguna adalah korwil
+                if (strpos($row["role"], 'korwil') !== false) {
+                    $response = ['status' => 'success', 'message' => 'Login berhasil', 'username' => $row["username"], 'role' => $row["role"]];
+                } else {
+                    $response = ['status' => 'error', 'message' => 'Anda bukan korwil, Anda tidak memiliki akses'];
+                }
             } else {
                 $response = ['status' => 'error', 'message' => 'Email atau password salah'];
             }
@@ -103,7 +108,7 @@ mysqli_close($data);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Login">
     <link href="../../assets_dashboard/images/logoprofil.png" rel="icon">
-    <title>Login</title>
+    <title>Login Korwil | Himapolindo</title>
     <link rel="stylesheet" type="text/css" href="../../assets_guests/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../assets_guests/css/fontawesome-all.min.css">
     <link rel="stylesheet" type="text/css" href="../../assets_guests/css/iofrm-style.css">
@@ -134,7 +139,7 @@ mysqli_close($data);
                             <img src="../../assets_dashboard/images/logoprofil.png" style="width: 150px;">
                         </a>
                         <div class="page-links">
-                            <a href="admin.php" class="active">Masuk</a>
+                            <a class="active">Masuk</a>
                         </div>
                         <form id="loginForm" action="#" method="POST">
                             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
@@ -173,9 +178,7 @@ mysqli_close($data);
                                 timer: 3000,
                                 showConfirmButton: false
                             }).then(() => {
-                                if (data.role === 'admin') {
-                                    window.location.href = 'admin.php';
-                                } else if (data.role.startsWith('korwil')) {
+                                if (data.role.startsWith('korwil')) {
                                     window.location.href = 'dashboard_korwil.php';
                                 }
                             });

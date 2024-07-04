@@ -43,7 +43,7 @@ include '../../function/config.php';
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Himapolindo</title>
+    <title>Lihat Rakernas | Himapolindo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -108,62 +108,6 @@ include '../../function/config.php';
                         <li class="menu-title">Menu</li>
                         <li>
                             <a href="admin.php" class="waves-effect"><i class='bx bx-home-smile'></i><span class="badge badge-pill badge-primary float-right"></span><span>Dashboard</span></a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Ravelnas</span></a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="lihat_ravelnas.php">Lihat Ravelnas</a></li>
-                                <li><a href="tambah_ravelnas.php">Tambah Ravelnas</a></li>
-                                <li><a href="komentar_ravelnas.php">Komentar Ravelnas</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Kongres Himapolindo</span></a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="lihat_kongres.php">Lihat Kongres Himapolindo</a></li>
-                                <li><a href="tambah_kongres.php">Tambah Kongres Himapolindo</a></li>
-                                <li><a href="komentar_kongres.php">Komentar Kongres Himapolindo</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Dies Natalis</span></a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="lihat_dies_natalis.php">Lihat Dies Natalis</a></li>
-                                <li><a href="tambah_dies_natalis.php">Tambah Dies Natalis</a></li>
-                                <li><a href="komentar_dies_natalis.php">Komentar Dies Natalis</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Rakernas</span></a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="lihat_rakernas.php">Lihat Rakernas</a></li>
-                                <li><a href="tambah_rakernas.php">Tambah Rakernas</a></li>
-                                <li><a href="komentar_rakernas.php">Komentar Rakernas</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Catatan Intelektual</span></a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="lihat_catatan.php">Lihat Catatan Intelektual</a></li>
-                                <li><a href="tambah_catatan.php">Tambah Catatan Intelektual</a></li>
-                                <li><a href="komentar_catatan.php">Komentar Catatan Intelektual</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Artikel</span></a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="lihat_artikel.php">Lihat Artikel</a></li>
-                                <li><a href="tambah_artikel.php">Tambah Artikel</a></li>
-                                <li><a href="komentar_artikel.php">Komentar Artikel</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Galeri</span></a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="lihat_galeri.php">Lihat Galeri</a></li>
-                                <li><a href="tambah_galeri.php">Tambah Galeri</a></li>
-                                <li><a href="komentar_galeri.php">Komentar Galeri</a></li>
-                            </ul>
                         </li>
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Ravelnas</span></a>

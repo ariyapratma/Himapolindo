@@ -135,9 +135,10 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <title>Himapolindo</title>
+    <title>Edit Ravelnas | Himapolindo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -164,6 +165,7 @@ $conn->close();
         }
     </style>
 </head>
+
 <body>
     <div id="layout-wrapper">
         <header id="page-topbar">
@@ -254,13 +256,6 @@ $conn->close();
                                 <li><a href="lihat_galeri.php">Lihat Galeri</a></li>
                                 <li><a href="tambah_galeri.php">Tambah Galeri</a></li>
                                 <li><a href="komentar_galeri.php">Komentar Galeri</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Pengaturan</span></a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="tentang_himapolindo.php">Tentang Himapolindo</a></li>
-                                <li><a href="profil_admin.php">Profil Admin</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -366,4 +361,5 @@ $conn->close();
                 <?php endif; ?>
             </script>
 </body>
+
 </html>

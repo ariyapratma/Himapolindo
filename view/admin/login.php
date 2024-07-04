@@ -103,7 +103,7 @@ mysqli_close($data);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Login">
     <link href="../../assets_dashboard/images/logoprofil.png" rel="icon">
-    <title>Login</title>
+    <title>Login Admin | Himapolindo</title>
     <link rel="stylesheet" type="text/css" href="../../assets_guests/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../assets_guests/css/fontawesome-all.min.css">
     <link rel="stylesheet" type="text/css" href="../../assets_guests/css/iofrm-style.css">
@@ -134,7 +134,7 @@ mysqli_close($data);
                             <img src="../../assets_dashboard/images/logoprofil.png" style="width: 150px;">
                         </a>
                         <div class="page-links">
-                            <a href="admin.php" class="active">Masuk</a>
+                            <a class="active">Masuk</a>
                         </div>
                         <form id="loginForm" action="#" method="POST">
                             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">

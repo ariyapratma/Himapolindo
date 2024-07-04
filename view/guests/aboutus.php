@@ -8,9 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="description" content="Himapolindo">
   <link href="../../assets_guests/images/favicon/logoprofil-remove.png" rel="icon">
-  <title>Himapolindo</title>
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Rubik:400,500,600,700%7cRoboto:400,500,700&display=swap">
+  <title>About Us | Himapolindo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
   <link rel="stylesheet" href="../../assets_guests/css/libraries.css"> 
   <link rel="stylesheet" href="../../assets_guests/css/style.css">
@@ -109,6 +108,22 @@
         box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Add shadow for better visibility */
         z-index: 1000; /* Ensure dropdown appears above other content */
         min-width: 200px; /* Set a minimum width for the dropdown */
+    }
+
+    .dropdown-menu li {
+      padding: 10px;
+      /* Adjust padding for dropdown items */
+    }
+
+    .dropdown-menu li a {
+      text-decoration: none;
+      /* Remove underline from links */
+      color: black;
+      /* Set link color */
+      display: block;
+      /* Make links block elements */
+      margin-right: auto;
+      margin-left: 15px;
     }
 
     .nav__item:hover .dropdown-menu {

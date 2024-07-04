@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,11 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="description" content="Himapolindo">
   <link href="../../assets_guests/images/favicon/logoprofil-remove.png" rel="icon">
-  <title>Himapolindo</title>
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Rubik:400,500,600,700%7cRoboto:400,500,700&display=swap">
+  <title>Detail Korwil | Himapolindo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500,600,700%7cRoboto:400,500,700&display=swap">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-  <link rel="stylesheet" href="../../assets_guests/css/libraries.css"> 
+  <link rel="stylesheet" href="../../assets_guests/css/libraries.css">
   <link rel="stylesheet" href="../../assets_guests/css/style.css">
   <script src="https://kit.fontawesome.com/17f6f0a605.js" crossorigin="anonymous"></script>
   <style>
@@ -25,121 +23,138 @@
     }
 
     .navbar-actions {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
     }
 
     .navbar-actions li {
-        margin-left: 10px;
-        position: relative; /* Ensure we can position the dropdown relative to the nav item */
+      margin-left: 10px;
+      position: relative;
+      /* Ensure we can position the dropdown relative to the nav item */
     }
 
     @media only screen and (max-width: 767px) {
-        .navbar-actions {
-            flex-direction: column;
-            align-items: flex-start;
-        }
+      .navbar-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-        .navbar-actions li {
-            margin: 5px 0;
-        }
+      .navbar-actions li {
+        margin: 5px 0;
+      }
 
-        .header-layout1 .navbar-nav {
-            flex-direction: column;
-            align-items: flex-start;
-        }
+      .header-layout1 .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-        .header-layout1 .navbar-nav .nav__item {
-            justify-content: flex-start;
-            padding: 5px 10px;
-        }
+      .header-layout1 .navbar-nav .nav__item {
+        justify-content: flex-start;
+        padding: 5px 10px;
+      }
 
-        .header-layout1 .navbar-collapse {
-            flex-direction: column;
-            align-items: flex-start;
-        }
+      .header-layout1 .navbar-collapse {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     .header-layout1 .navbar-nav {
-        display: flex;
-        justify-content: center;
-        width: 100%;
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
 
     .header-layout1 .navbar-nav .nav__item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 10px;
-        position: relative; /* Ensure we can position the dropdown relative to the nav item */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      position: relative;
+      /* Ensure we can position the dropdown relative to the nav item */
     }
 
     .header-layout1 .navbar-collapse {
-        display: flex;
-        justify-content: center;
-        width: 100%;
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
 
     .dropdown-menu {
-        display: none; /* Hide the dropdown menu by default */
-        position: absolute;
-        left: 0; /* Align to the left */
-        top: 100%; /* Position below the nav item */
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        background-color: white; /* Set background color */
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Add shadow for better visibility */
-        z-index: 1000; /* Ensure dropdown appears above other content */
-        min-width: 200px; /* Set a minimum width for the dropdown */
+      display: none;
+      /* Hide the dropdown menu by default */
+      position: absolute;
+      left: 0;
+      /* Align to the left */
+      top: 100%;
+      /* Position below the nav item */
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background-color: white;
+      /* Set background color */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      /* Add shadow for better visibility */
+      z-index: 1000;
+      /* Ensure dropdown appears above other content */
+      min-width: 200px;
+      /* Set a minimum width for the dropdown */
     }
 
     .nav__item:hover .dropdown-menu {
-        display: block; /* Show the dropdown menu on hover */
+      display: block;
+      /* Show the dropdown menu on hover */
     }
 
     .dropdown-menu li {
-        padding: 10px; /* Adjust padding for dropdown items */
+      padding: 10px;
+      /* Adjust padding for dropdown items */
     }
 
     .dropdown-menu li a {
-        text-decoration: none; /* Remove underline from links */
-        color: black; /* Set link color */
-        display: block; /* Make links block elements */
+      text-decoration: none;
+      /* Remove underline from links */
+      color: black;
+      /* Set link color */
+      display: block;
+      /* Make links block elements */
     }
 
     .dropdown-menu li a:hover {
-        background-color: #ddd; /* Highlight on hover */
+      background-color: #ddd;
+      /* Highlight on hover */
     }
 
     .text-center {
-    text-align: center;
+      text-align: center;
     }
 
     .center-image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
-    
+
     .member {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-        }
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out;
+    }
 
-        .member:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
-        }
+    .member:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
 
-        .large-text {
-    font-size: 20px; /* Atur ukuran font sesuai kebutuhan Anda */
-    }   
+    .large-text {
+      font-size: 20px;
+      /* Atur ukuran font sesuai kebutuhan Anda */
+    }
+
     /* ... CSS yang sudah ada ... */
-</style>
+  </style>
 
 
 
@@ -149,11 +164,11 @@
 
 <body>
   <div class="wrapper">
-    
+
     <div class="preloader">
       <div class="loading"><span></span><span></span><span></span><span></span></div>
     </div>
-    
+
     <!-- /.preloader -->
 
     <!-- =========================
@@ -163,7 +178,7 @@
       <nav class="navbar navbar-expand-lg sticky-navbar">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.php">
-          <img src="../../assets_guests/images/favicon/logoprofil.png" class="logo" alt="logo" width="60" height="60">
+            <img src="../../assets_guests/images/favicon/logoprofil.png" class="logo" alt="logo" width="60" height="60">
           </a>
           <button class="navbar-toggler" type="button">
             <span class="menu-lines"><span></span></span>
@@ -219,68 +234,68 @@
         <div class="row">
           <div class="col-12">
             <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
-            <h1 class="pagetitle__heading mb-0">Korwil</h1>
-          </div>
+              <h1 class="pagetitle__heading mb-0">Korwil</h1>
+            </div>
           </div><!-- /.col-xl-6 -->
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.page-title -->
 
     <section class="features-layout2 pt-80 pb-5">
-    <div class="container text-center"> <!-- Tambahkan 'text-center' -->
+      <div class="container text-center"> <!-- Tambahkan 'text-center' -->
         <div class="row">
-        <div class="col-lg-12">
+          <div class="col-lg-12">
             <img src="../../assets_guests/images/logo/logo-profil.png" alt="Logo Profil" class="center-image">
-        </div>
+          </div>
         </div><!-- /.row -->
-    </div><!-- /.container -->
+      </div><!-- /.container -->
     </section><!-- /.Features Layout 2 -->
 
     <!-- ======================
     Features Layout 2
     ========================= -->
     <section class="features-layout2 pt-80">
-    <div class="container">
-    <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-1">
-    </div>
-      <div class="col-sm-12 col-md-12 col-lg-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-1">
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-4">
             <div class="member">
-                      <div class="member__img">
-                          <img src="../../assets_guests/images/ftim/ucup-tim.jpg" alt="member img">
-                      </div>
-                      <div class="member__info d-flex align-items-center justify-content-between">
-                          <div>
-                              <h5 class="member__name">M Yusuf Budiman</h5>
-                              <p class="member__desc">System & Data Analyst </p>
-                          </div>
-                          <ul class="social-icons list-unstyled mb-0">
-                              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                          </ul>
-                      </div>
+              <div class="member__img">
+                <img src="../../assets_guests/images/ftim/ucup-tim.jpg" alt="member img">
+              </div>
+              <div class="member__info d-flex align-items-center justify-content-between">
+                <div>
+                  <h5 class="member__name">M Yusuf Budiman</h5>
+                  <p class="member__desc">System & Data Analyst </p>
+                </div>
+                <ul class="social-icons list-unstyled mb-0">
+                  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+              </div>
             </div>
-      </div><!-- /col-lg-4 -->
-      <div class="col-sm-12 col-md-12 col-lg-1">
-            </div>
-      <div class="col-sm-12 col-md-12 col-lg-6 ml-10">
-        <h1 class="heading__title">KORWIL 1</h1>
-        <p class="heading__desc mb-5 mt-60 large-text">
-          1. Universitas Sumatera Utara  <br>
-          2. UIN Sumatera Utara  <br>
-          3. Universitas Andalas  <br>
-          4. Universitas Jambi  <br>
-          5. UIN Raden Fattah  <br>
-          6. UIN Raden Intan  <br>
-          7. Universitas Bangka Belitung  <br>
-          8. Universitas Muhammadiyah Sumatera Barat <br>
-          9. UIN Jambi
-      </p>
-      </div><!-- /col-lg-8 -->
-    </div><!-- /.row -->
-  </div><!-- /.container -->
-</section><!-- /.Features Layout 2 -->
+          </div><!-- /col-lg-4 -->
+          <div class="col-sm-12 col-md-12 col-lg-1">
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6 ml-10">
+            <h1 class="heading__title">KORWIL 1</h1>
+            <p class="heading__desc mb-5 mt-60 large-text">
+              1. Universitas Sumatera Utara <br>
+              2. UIN Sumatera Utara <br>
+              3. Universitas Andalas <br>
+              4. Universitas Jambi <br>
+              5. UIN Raden Fattah <br>
+              6. UIN Raden Intan <br>
+              7. Universitas Bangka Belitung <br>
+              8. Universitas Muhammadiyah Sumatera Barat <br>
+              9. UIN Jambi
+            </p>
+          </div><!-- /col-lg-8 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.Features Layout 2 -->
 
 
     <!-- ========================
@@ -293,10 +308,10 @@
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-contact">
               <h5 class="footer-widget-title">HIMAPOL</h5>
               <div class="footer-widget-content">
-                <p class="mb-20">Himpunan Mahasiswa Ilmu Politik (HIMAPOL) Indonesia merupakan organisasi yang 
-menaungi himpunan mahasiswa jurusan dan atau departemen program studi ilmu politik 
-yang setaraf dengan lembaga perguruan dinggi diseluruh wilayah Negara Kesatuan 
-Republik Indonesia.</p>
+                <p class="mb-20">Himpunan Mahasiswa Ilmu Politik (HIMAPOL) Indonesia merupakan organisasi yang
+                  menaungi himpunan mahasiswa jurusan dan atau departemen program studi ilmu politik
+                  yang setaraf dengan lembaga perguruan dinggi diseluruh wilayah Negara Kesatuan
+                  Republik Indonesia.</p>
               </div><!-- /.footer-widget-content -->
             </div><!-- /.col-xl-3 -->
             <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 footer-widget footer-widget-nav">

@@ -30,7 +30,6 @@ if (isset($_SESSION["username"])) {
     header("Location: login.php");
     exit();
 }
-
 mysqli_close($data);
 include '../../function/config.php';
 
@@ -136,9 +135,10 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <title>Himapolindo</title>
+    <title>Edit Artikel | Himapolindo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -165,6 +165,7 @@ $conn->close();
         }
     </style>
 </head>
+
 <body>
     <div id="layout-wrapper">
         <header id="page-topbar">
@@ -257,13 +258,6 @@ $conn->close();
                                 <li><a href="komentar_galeri.php">Komentar Galeri</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Pengaturan</span></a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="tentang_himapolindo.php">Tentang Himapolindo</a></li>
-                                <li><a href="profil_admin.php">Profil Admin</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -327,7 +321,6 @@ $conn->close();
                     </footer>
                 </div>
             </div>
-
             <div class="rightbar-overlay"></div>
 
             <script src="../../assets_dashboard/js/jquery.min.js"></script>
@@ -341,7 +334,6 @@ $conn->close();
 
             <!-- Quill JS -->
             <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
             <script>
                 // Initialize Quill editor
                 var quill = new Quill('#editor-container', {
@@ -369,4 +361,5 @@ $conn->close();
                 <?php endif; ?>
             </script>
 </body>
+
 </html>

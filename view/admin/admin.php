@@ -40,7 +40,7 @@ mysqli_close($data);
 
 <head>
     <meta charset="utf-8" />
-    <title>Himapolindo</title>
+    <title>Dashboard Admin | Himapolindo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -76,9 +76,6 @@ mysqli_close($data);
                             <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                <span>Profile</span>
-                            </a>
                             <a class="dropdown-item d-flex align-items-center justify-content-between" href="logout.php">
                                 <span>Log Out</span>
                             </a>

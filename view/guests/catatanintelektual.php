@@ -1,7 +1,7 @@
 <?php
 include '../../function/config.php';
 
-// Query untuk mengambil data calek
+// Query untuk mengambil calek
 $sql = "SELECT * FROM calek";
 $result = $conn->query($sql);
 
@@ -16,19 +16,11 @@ $result = $conn->query($sql);
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="description" content="Himapolindo">
   <link href="../../assets_guests/images/favicon/logoprofil-remove.png" rel="icon">
-  <title>Himapolindo</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,500,600,700%7cRoboto:400,500,700&display=swap">
+  <title>Catatan Intelektual | Himapolindo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
   <link rel="stylesheet" href="../../assets_guests/css/libraries.css">
   <link rel="stylesheet" href="../../assets_guests/css/style.css">
-
-  <style>
-    /* CSS Tambahan */
-    .ql-editor {
-      min-height: 200px;
-      /* Tinggi minimum untuk Quill Editor */
-    }
-  </style>
 
   <style>
     /* ... CSS yang sudah ada ... */
@@ -37,20 +29,6 @@ $result = $conn->query($sql);
       padding: 50px;
       text-align: center;
       background-color: #FFFFFF;
-    }
-
-    .navbar-actions {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-    }
-
-    .navbar-actions li {
-      margin-left: 10px;
-      position: relative;
-      /* Ensure we can position the dropdown relative to the nav item */
     }
 
     @media only screen and (max-width: 767px) {
@@ -77,6 +55,94 @@ $result = $conn->query($sql);
         flex-direction: column;
         align-items: flex-start;
       }
+    }
+
+    .navbar-actions {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-actions li {
+      margin-left: 10px;
+      position: relative;
+      /* Ensure we can position the dropdown relative to the nav item */
+    }
+
+    .header-layout1 .navbar-nav {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .header-layout1 .navbar-nav .nav__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      position: relative;
+      /* Ensure we can position the dropdown relative to the nav item */
+    }
+
+    .header-layout1 .navbar-collapse {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .dropdown-menu li {
+      padding: 10px;
+      /* Adjust padding for dropdown items */
+      text-align: left;
+    }
+
+    .dropdown-menu {
+      display: none;
+      /* Hide the dropdown menu by default */
+      position: absolute;
+      left: 0;
+      /* Align to the left */
+      top: 100%;
+      /* Position below the nav item */
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background-color: white;
+      /* Set background color */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      /* Add shadow for better visibility */
+      z-index: 1000;
+      /* Ensure dropdown appears above other content */
+      min-width: 200px;
+      /* Set a minimum width for the dropdown */
+    }
+
+    .nav__item:hover .dropdown-menu {
+      display: block;
+      /* Show the dropdown menu on hover */
+    }
+
+    .dropdown-menu li {
+      padding: 10px;
+      /* Adjust padding for dropdown items */
+    }
+
+    .dropdown-menu li a {
+      text-decoration: none;
+      /* Remove underline from links */
+      color: black;
+      /* Set link color */
+      display: block;
+      /* Make links block elements */
+      margin-right: auto;
+      margin-left: 15px;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #ddd;
+      /* Highlight on hover */
     }
 
     .header-layout1 .navbar-nav {
@@ -146,48 +212,59 @@ $result = $conn->query($sql);
     }
 
     .card {
-      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       border: 2px solid #ddd;
-      /* Warna border default */
       transition: border-color 0.3s ease;
-      /* Transisi halus untuk perubahan warna border */
+      background-color: #FFFFFF;
+      border-radius: 15px;
     }
 
     .card:hover {
       border-color: #ae292a;
-      /* Warna border saat hover */
+    }
+
+    .card-img-top {
+      width: 100%;
+      /* Lebar kartu mengisi lebar kartu secara penuh */
+      height: 100%;
+      /* Tinggi kartu mengisi tinggi kartu secara penuh */
+      max-height: 225px;
+      /* Atur tinggi maksimum sesuai kebutuhan */
+      object-fit: cover;
+      /* Gambar mengisi area dengan mempertahankan aspek ratio */
+      object-position: center;
+      /* Posisi gambar di tengah-tengah area kartu */
     }
 
     .card-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      /* Ensure enough space for the title */
-      height: 100%;
-      background-color: #FFFFFF;
-      border-top: none;
-      /* Remove top border */
+      flex: 1;
       padding: 1rem;
-      /* Optional: Add padding if necessary */
     }
 
     .card-title {
-      flex-shrink: 0;
-      /* Prevent shrinking */
-      margin-bottom: 0.5rem;
-      /* Adjust margin as needed */
+      font-size: 1.25rem;
+      font-weight: bold;
     }
 
     .card-text {
-      flex-grow: 1;
-      /* Allow to grow and take available space */
-      margin-bottom: 0;
-      /* Optional: to remove bottom margin on card-text element */
+      margin-bottom: 1rem;
+      font-size: 1rem;
     }
 
     .card-footer {
-      margin-top: auto;
-      /* Push footer to the bottom */
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+
+    .pagination .active .page-link {
+      background-color: #AE292A;
+      border-color: #AE292A;
+    }
+
+    .pagination .page-link {
+      color: #AE292A;
     }
   </style>
 </head>
@@ -270,122 +347,240 @@ $result = $conn->query($sql);
       </div><!-- /.container -->
     </section><!-- /.page-title -->
 
+    <?php
+    include '../../function/config.php';
 
-    <body>
-      <div class="container mt-60 mb-50">
-        <div class="row">
-          <!-- Card 1 -->
-          <?php
-          // Periksa jika ada hasil dari query
-          if ($result->num_rows > 0) {
-            // Output data setiap baris
-            while ($row = $result->fetch_assoc()) {
-              // Ambil data dari setiap baris
-              $judul = $row['judul_calek'];
-              $deskripsi = $row['konten_calek'];
-              $thumbnail = $row['thumbnail_calek'];
-              $views = $row['views'];
-              $id_calek = $row['id_calek'];
+    // Ambil id dari parameter GET
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
 
-              // Tampilkan card untuk setiap data
-              echo '
-                        <div class="col-md-4 mb-4">
-              <a href="detailbacaancalek.php?id=' . $row['id_calek'] . '" class="card-link" onclick="increaseViews(' . $row['id_calek'] . ')">
-                <div class="card">
-                    <img src="' . $thumbnail . '" class="card-img-top" alt="' . $judul . '">
-                    <div class="card-body">
-                        <h5 class="card-title">' . $judul . '</h5>
-                        <p class="card-text">' . $deskripsi . '</p>
-                    </div>
-                    <div class="card-body card-footer">
-                        <p class="card-text">' . $views . ' views</p> <!-- Tampilkan jumlah views -->
-                        <p class="card-text"><small class="text-muted">superAdmin</small></p>
-                    </div>
-                </div>
-            </a>
-        </div>';
-            }
-          } else {
-            // Jika tidak ada data
-            echo '<p>Tidak ada data calek.</p>';
-          }
-          ?>
+    // Query untuk mengambil username dari tabel login berdasarkan id_login dari tabel calek
+    $query = "SELECT l.username
+FROM calek r
+LEFT JOIN login l ON r.id_login = l.id_login
+WHERE r.id_calek = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+
+    // Inisialisasi variabel username
+    $username = ""; // Initialize username variable
+
+    // Ambil username jika query berhasil dan ada hasil
+    if ($result && $result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $username = htmlspecialchars($row['username']);
+    }
+
+    ?>
+
+
+    <div class="container mt-60 mb-50">
+      <!-- Form Pencarian -->
+      <div class="row mb-4">
+        <div class="col-md-4 mr-auto">
+          <form method="GET" action="">
+            <div class="input-group">
+              <input type="text" class="form-control" name="search" placeholder="Cari berdasarkan judul" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+              <div class="input-group-append">
+                <button class="" type="submit">
+                  <i class="fas fa-search ml-4"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4 ml-auto">
+          <form method="GET" action="">
+            <div class="input-group">
+              <select name="sort" class="form-control" onchange="this.form.submit()">
+                <option value="" disabled selected>Sort By</option>
+                <option value="asc" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'asc') ? 'selected' : ''; ?>>Tanggal Upload Terlama</option>
+                <option value="desc" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'desc') ? 'selected' : ''; ?>>Tanggal Upload Terbaru</option>
+                <option value="views_desc" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'views_desc') ? 'selected' : ''; ?>>Views Terbanyak</option>
+                <option value="views_asc" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'views_asc') ? 'selected' : ''; ?>>Views Tersedikit</option>
+              </select>
+            </div>
+          </form>
         </div>
       </div>
 
-      <div class="row mb-50">
-        <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-          <nav class="pagination-area">
-            <ul class="pagination justify-content-center">
-              <li><a class="current" href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-            </ul>
-          </nav><!-- /.pagination-area -->
-        </div><!-- /.col-lg-12 -->
-      </div><!-- /.row -->
 
-      <!-- ========================
+
+      <div class="row">
+        <?php
+        // Ambil keyword pencarian
+        $search = isset($_GET['search']) ? $_GET['search'] : '';
+        // Ambil sort
+        $sort = isset($_GET['sort']) ? $_GET['sort'] : '';
+
+        // Tentukan jumlah item per halaman
+        $items_per_page = 9;
+
+        // Tentukan halaman saat ini
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $offset = ($page - 1) * $items_per_page;
+
+        // Tambahkan kondisi ORDER BY ke query berdasarkan opsi pengurutan
+        $order_by = '';
+        if ($sort == 'asc') {
+          $order_by = 'ORDER BY tanggal_calek ASC';
+        } elseif ($sort == 'desc') {
+          $order_by = 'ORDER BY tanggal_calek DESC';
+        } elseif ($sort == 'views_desc') {
+          $order_by = 'ORDER BY views DESC';
+        } elseif ($sort == 'views_asc') {
+          $order_by = 'ORDER BY views ASC';
+        }
+
+        // Query database dengan kondisi pencarian (tidak case sensitive) dan pagination dan fitur sorting
+        $query = "SELECT r.*, l.username
+              FROM calek r
+              LEFT JOIN login l ON r.id_login = l.id_login
+              WHERE LOWER(judul_calek) LIKE LOWER('%$search%') $order_by
+              LIMIT $items_per_page OFFSET $offset";
+        $result = $conn->query($query);
+
+        // Query untuk mendapatkan jumlah total data (untuk pagination)
+        $queryTotal = "SELECT COUNT(*) AS total FROM calek WHERE LOWER(judul_calek) LIKE LOWER('%$search%')";
+        $resultTotal = $conn->query($queryTotal);
+        $total = $resultTotal->fetch_assoc()['total'];
+
+        // Hitung total jumlah data
+        $total_items_query = "SELECT COUNT(*) as count FROM calek WHERE LOWER(judul_calek) LIKE LOWER('%$search%')";
+        $total_items_result = $conn->query($total_items_query);
+        $total_items_row = $total_items_result->fetch_assoc();
+        $total_items = $total_items_row['count'];
+        $pages = ceil($total_items / $items_per_page);
+
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+            $judul = $row['judul_calek'];
+            $deskripsi = $row['konten_calek'];
+            $thumbnail = $row['thumbnail_calek'];
+            $views = $row['views'];
+            $id_calek = $row['id_calek'];
+            $tanggal_upload = $row['tanggal_calek'];
+            $username = htmlspecialchars($row['username']);
+
+            // Ganti format tanggal
+            $date = new DateTime($tanggal_upload);
+            $formatted_date = $date->format('d-m-Y');
+
+            // Tampilkan card
+            echo '
+                <div class="col-md-4 mb-4">
+                  <a href="detailbacaancalek.php?id=' . $id_calek . '" class="card-link" onclick="increaseViews(' . $id_calek . ')">
+                    <div class="card">
+                      <img src="' . $thumbnail . '" class="card-img-top" alt="' . $judul . '">
+                        <div class="card-body">
+                          <h5 class="card-title">' . $judul . '</h5>
+                        </div>
+                        <div class="card-body card-footer">
+                          <p class="card-text">' . $views . ' views</p>
+                          <p class="card-text"><small class="text-muted">' . htmlspecialchars($username) . '</small></p>
+                          <p class="card-text"><small class="text-muted">Tanggal: ' . $formatted_date . '</small></p>
+                        </div>
+                    </div>
+                  </a>
+                </div>';
+          }
+        } else {
+          // Jika tidak ada data
+          echo '<div class="col-12"><p class="text-center">Tidak ada data calek.</p></div>';
+        }
+        ?>
+      </div>
+    </div>
+
+
+    <div class="row mb-50">
+      <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+        <nav class="pagination-area">
+          <ul class="pagination justify-content-center">
+            <?php
+            // Tombol sebelumnya
+            if ($page > 1) {
+              echo '<li class="page-item"><a class="page-link" href="?search=' . $search . '&page=' . ($page - 1) . '"><i class="fa fa-angle-left"></i></a></li>';
+            }
+
+            // Menampilkan hanya dua tombol halaman
+            for ($i = max(1, $page - 1); $i <= min($pages, $page + 1); $i++) {
+              echo '<li class="page-item ' . ($i == $page ? 'active' : '') . '"><a class="page-link" href="?search=' . $search . '&page=' . $i . '">' . $i . '</a></li>';
+            }
+
+            // Tombol selanjutnya
+            if ($page < $pages) {
+              echo '<li class="page-item"><a class="page-link" href="?search=' . $search . '&page=' . ($page + 1) . '"><i class="fa fa-angle-right"></i></a></li>';
+            }
+            ?>
+          </ul>
+        </nav><!-- /.pagination-area -->
+      </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+
+    <!-- ========================
       Footer
     ========================== -->
-      <footer class="footer">
-        <div class="footer-primary">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-contact">
-                <h5 class="footer-widget-title">HIMAPOL</h5>
-                <div class="footer-widget-content">
-                  <p class="mb-20">Himpunan Mahasiswa Ilmu Politik (HIMAPOL) Indonesia merupakan organisasi yang
-                    menaungi himpunan mahasiswa jurusan dan atau departemen program studi ilmu politik
-                    yang setaraf dengan lembaga perguruan dinggi diseluruh wilayah Negara Kesatuan
-                    Republik Indonesia.</p>
-                </div><!-- /.footer-widget-content -->
-              </div><!-- /.col-xl-3 -->
-              <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 footer-widget footer-widget-nav">
-              </div><!-- /.col-xl-2 -->
-              <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-contact">
-                <h6 class="footer-widget-title">Kunjungi</h6>
-                <div class="footer-widget-content">
-                  <p class="mb-20">Email :<a href=""> himapolindo@gmail.com</a></p>
-                  <div class="contact__number d-flex align-items-center mb-30">
-                    <i class="icon-phone"></i>
-                    <a href="" class="color-primary">0878-7528-1825</a>
-                  </div><!-- /.contact__numbr -->
-                  <p class="mb-20">Jl. Kumbang No.14, RT.02/RW.06, Babakan, Kecamatan Bogor Tengah, Kota Bogor, Jawa Barat 16128</p>
-                </div><!-- /.footer-widget-content -->
-              </div><!-- /.col-xl-3 -->
-              <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-right">
-                <h6 class="footer-widget-title mr-5">Follow Kami</h6>
-                <div class="footer-widget-content">
-                  <ul class="social-icons list-unstyled">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                </div><!-- /.footer-widget-content -->
-              </div><!-- /.col-xl-3 -->
-            </div><!-- /.row -->
-          </div><!-- /.container -->
-        </div><!-- /.footer-primary -->
-        <div class="footer-copyrights">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between">
-                <nav>
-                  <ul class="copyright__nav d-flex flex-wrap list-unstyled mb-0">
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                  </ul>
-                </nav>
-                <p class="mb-0">
-                  <span class="color-gray">&copy; 2024 Himapolindo, All Rights Reserved</span>
-                </p>
-              </div><!-- /.col-lg-12 -->
-            </div><!-- /.row -->
-          </div><!-- /.container -->
-        </div><!-- /.footer-copyrights-->
-      </footer><!-- /.Footer -->
-      <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
+    <footer class="footer">
+      <div class="footer-primary">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-contact">
+              <h5 class="footer-widget-title">HIMAPOL</h5>
+              <div class="footer-widget-content">
+                <p class="mb-20">Himpunan Mahasiswa Ilmu Politik (HIMAPOL) Indonesia merupakan organisasi yang
+                  menaungi himpunan mahasiswa jurusan dan atau departemen program studi ilmu politik
+                  yang setaraf dengan lembaga perguruan dinggi diseluruh wilayah Negara Kesatuan
+                  Republik Indonesia.</p>
+              </div><!-- /.footer-widget-content -->
+            </div><!-- /.col-xl-3 -->
+            <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 footer-widget footer-widget-nav">
+            </div><!-- /.col-xl-2 -->
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-contact">
+              <h6 class="footer-widget-title">Kunjungi</h6>
+              <div class="footer-widget-content">
+                <p class="mb-20">Email :<a href=""> himapolindo@gmail.com</a></p>
+                <div class="contact__number d-flex align-items-center mb-30">
+                  <i class="icon-phone"></i>
+                  <a href="" class="color-primary">0878-7528-1825</a>
+                </div><!-- /.contact__numbr -->
+                <p class="mb-20">Jl. Kumbang No.14, RT.02/RW.06, Babakan, Kecamatan Bogor Tengah, Kota Bogor, Jawa Barat 16128</p>
+              </div><!-- /.footer-widget-content -->
+            </div><!-- /.col-xl-3 -->
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-right">
+              <h6 class="footer-widget-title mr-5">Follow Kami</h6>
+              <div class="footer-widget-content">
+                <ul class="social-icons list-unstyled">
+                  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul><!-- /.social-icons -->
+              </div><!-- /.footer-widget-content -->
+            </div><!-- /.col-xl-3 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.footer-primary -->
+      <div class="footer-copyrights">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-between">
+              <nav>
+                <ul class="copyright__nav d-flex flex-wrap list-unstyled mb-0">
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                </ul>
+              </nav>
+              <p class="mb-0">
+                <span class="color-gray">&copy; 2024 Himapolindo, All Rights Reserved</span>
+              </p>
+            </div><!-- /.col-lg-12 -->
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div><!-- /.footer-copyrights-->
+    </footer><!-- /.Footer -->
+    <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
 
   </div><!-- /.wrapper -->
 

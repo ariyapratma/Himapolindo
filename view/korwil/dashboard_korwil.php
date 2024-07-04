@@ -37,7 +37,7 @@ mysqli_close($data);
 
 <head>
     <meta charset="utf-8" />
-    <title>Fishee - Dasbor Partner</title>
+    <title>Dasbboard Korwil | Himapolindo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -73,11 +73,8 @@ mysqli_close($data);
                             <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="akun.php">
-                                <span>Profil</span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="login.php">
-                                <span>Keluar</span>
+                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="logout.php">
+                                <span>Log Out</span>
                             </a>
                         </div>
                     </div>
@@ -100,20 +97,18 @@ mysqli_close($data);
                     <!-- Left Menu Start -->
                     <ul class="metismenu list-unstyled" id="side-menu">
                         <li class="menu-title">Menu</li>
-
                         <li>
                             <a href="dashboard_korwil.php" class="waves-effect"><i class='bx bx-home-smile'></i><span>Dashboard</span></a>
                         </li>
-
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="fas fa-box-open"></i><span>Catatan Intelektual</span></a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="add_calek.php">Menambah Catatan Intelektual</a></li>
                                 <li><a href="list_calek.php">Lihat Catatan Intelektual</a></li>
+                                <li><a href="add_calek.php">Tambah Catatan Intelektual</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="list_komentar_calek.php" class="waves-effect"><i class='bx bx-home-smile'></i><span>Komentar</span></a>
+                            <a href="list_komentar_calek.php" class="waves-effect"><i class='bx bx-home-smile'></i><span>Komentar Catatan Intelektual</span></a>
                         </li>
                     </ul>
                 </div>
@@ -163,11 +158,11 @@ mysqli_close($data);
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            2023 © Fishee.
+                            2024 © Himapolindo.
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-right d-none d-sm-block">
-                                Didesain dan dikembangkan oleh tim Circle X
+                                Design & Develop by Himapolindo
                             </div>
                         </div>
                     </div>

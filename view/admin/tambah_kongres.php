@@ -17,13 +17,14 @@ if (!$data) {
 if (isset($_SESSION["username"])) {
     $username = $_SESSION["username"];
 
-    // Query untuk mendapatkan role berdasarkan username
-    $sql = "SELECT role FROM login WHERE username='$username'";
+    // Query untuk mendapatkan role dan id_login berdasarkan username
+    $sql = "SELECT id_login, role FROM login WHERE username='$username'";
     $result = mysqli_query($data, $sql);
 
     if ($result) {
         $row = mysqli_fetch_array($result);
         $role = $row["role"];
+        $id_login = $row["id_login"]; // Fetch id_login from the login table
     } else {
         echo "Query error: " . mysqli_error($data);
     }
@@ -31,6 +32,7 @@ if (isset($_SESSION["username"])) {
     header("Location: login.php");
     exit();
 }
+
 
 mysqli_close($data);
 ?>
@@ -70,7 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response['error'] = "File tidak terupload.";
     } else {
         if (move_uploaded_file($_FILES["userfile"]["tmp_name"][0], $target_file)) {
-            $sql = "INSERT INTO kongres (judul_kongres, thumbnail_kongres, konten_kongres, tanggal_kongres) VALUES ('$judul_kongres', '$target_file', '$deskripsi', NOW())";
+            $sql = "INSERT INTO kongres (judul_kongres, thumbnail_kongres, konten_kongres, tanggal_kongres, id_login) VALUES ('$judul_kongres', '$target_file', '$deskripsi', NOW(), '$id_login')";
+
 
             if ($conn->query($sql) === TRUE) {
                 $response['success'] = "Data berhasil ditambahkan!";
@@ -89,9 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <title>Himapolindo</title>
+    <title>Tambah Kongres | Himapolindo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -111,6 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Quill CSS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
+
 <body>
 
     <!-- Begin page -->
@@ -220,11 +225,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0 font-size-18">Tambah Kongres Himapolindo</h4>
+                                <h4 class="mb-0 font-size-18">Tambah Kongres</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="lihat_kongres.php">Lihat Kongres Himapolindo</a></li>
-                                        <li class="breadcrumb-item active">Tambah Kongres Himapolindo</li>
+                                        <li class="breadcrumb-item"><a href="lihat_kongres.php">Lihat Kongres</a></li>
+                                        <li class="breadcrumb-item active">Tambah Kongres</li>
                                     </ol>
                                 </div>
                             </div>
@@ -235,7 +240,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Judul Kongres Himapolindo</label>
+                                <label>Judul Kongres</label>
                                 <textarea class="form-control" name="judul_kongres" rows="3"></textarea>
                                 <small class="text-danger" id="judulError"></small>
                             </div>
@@ -351,4 +356,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
     </script>
 </body>
+
 </html>

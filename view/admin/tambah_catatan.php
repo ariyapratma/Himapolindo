@@ -17,13 +17,14 @@ if (!$data) {
 if (isset($_SESSION["username"])) {
     $username = $_SESSION["username"];
 
-    // Query untuk mendapatkan role berdasarkan username
-    $sql = "SELECT role FROM login WHERE username='$username'";
+    // Query untuk mendapatkan role dan id_login berdasarkan username
+    $sql = "SELECT id_login, role FROM login WHERE username='$username'";
     $result = mysqli_query($data, $sql);
 
     if ($result) {
         $row = mysqli_fetch_array($result);
         $role = $row["role"];
+        $id_login = $row["id_login"]; // Fetch id_login from the login table
     } else {
         echo "Query error: " . mysqli_error($data);
     }
@@ -31,6 +32,7 @@ if (isset($_SESSION["username"])) {
     header("Location: login.php");
     exit();
 }
+
 
 mysqli_close($data);
 ?>
@@ -70,7 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response['error'] = "File tidak terupload.";
     } else {
         if (move_uploaded_file($_FILES["userfile"]["tmp_name"][0], $target_file)) {
-            $sql = "INSERT INTO calek (judul_calek, thumbnail_calek, konten_calek, tanggal_calek) VALUES ('$judul_calek', '$target_file', '$deskripsi', NOW())";
+            $sql = "INSERT INTO calek (judul_calek, thumbnail_calek, konten_calek, tanggal_calek, id_login) VALUES ('$judul_calek', '$target_file', '$deskripsi', NOW(), '$id_login')";
+
 
             if ($conn->query($sql) === TRUE) {
                 $response['success'] = "Data berhasil ditambahkan!";
@@ -89,9 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <title>Himapolindo</title>
+    <title>Tambah Catatan Intelektual | Himapolindo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -111,6 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Quill CSS -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
+
 <body>
 
     <!-- Begin page -->
@@ -223,7 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <h4 class="mb-0 font-size-18">Tambah Catatan Intelektual</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="lihat_rakernas.php">Lihat Catatan Intelektual</a></li>
+                                        <li class="breadcrumb-item"><a href="lihat_catatan.php">Lihat Catatan Intelektual</a></li>
                                         <li class="breadcrumb-item active">Tambah Catatan Intelektual</li>
                                     </ol>
                                 </div>
@@ -315,7 +320,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $(document).ready(function() {
             var quillDeskripsi = new Quill('#deskripsi_editor', {
                 theme: 'snow',
-                placeholder: 'Isi deskripsi catatan intelektual di sini...'
+                placeholder: 'Isi deskripsi calek di sini...'
             });
 
             $('#calekForm').on('submit', function(event) {
@@ -351,4 +356,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
     </script>
 </body>
+
 </html>
