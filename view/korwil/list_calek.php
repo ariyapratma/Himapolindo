@@ -1,9 +1,46 @@
-<!DOCTYPE HTML>
-<html>
+<?php
+session_start();
+
+// Konfigurasi database
+$host = "localhost";
+$user = "root";
+$password = "";
+$db = "himapolindo";
+
+// Menghubungkan ke database
+$data = mysqli_connect($host, $user, $password, $db);
+if (!$data) {
+    die("Connection error: " . mysqli_connect_error());
+}
+
+// Memeriksa sesi pengguna
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+
+    // Query untuk mendapatkan role berdasarkan username
+    $sql = "SELECT role FROM login WHERE username='$username'";
+    $result = mysqli_query($data, $sql);
+
+    if ($result) {
+        $row = mysqli_fetch_array($result);
+        $role = $row["role"];
+    } else {
+        echo "Query error: " . mysqli_error($data);
+    }
+} else {
+    header("Location: login.php");
+    exit();
+}
+
+mysqli_close($data);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <title>List Data Produk</title>
+    <title>Catatan Intelektual</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="MyraStudio" name="author" />
@@ -16,165 +53,31 @@
     <link href="../../assets_dashboard/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../../assets_dashboard/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="../../assets_dashboard/css/theme.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets_dashboard/css/button.css" rel="stylesheet" type="text/css" />
+
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 </head>
-
 <style>
-    a {
-    color: #007dab;
-    text-decoration: none;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    outline: none;
-  }
-  a:hover, a:focus {
-    color: #333;
-    text-decoration: none;
-    outline: none;
-  }
-  
-  a.btn_1,
-  .btn_1 {
-    border: none;
-    color: #fff;
-    background: #007dab;
-    cursor: pointer;
-    padding: 10px 15px;
-    display: inline-block;
-    outline: none;
-    font-size: 13px;
-    font-size: 0.8125rem;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    border-radius: 25px;
-    line-height: 1;
-    font-weight: 500;
-  }
-  a.btn_1.gray,
-  .btn_1.gray {
-    background: #e9ecef;
-    color: #868e96;
-    margin-top: 10px;
-  }
-  a.btn_1.gray.approve:hover,
-  .btn_1.gray.approve:hover {
-    background: #28a745;
-    color: #fff;
-  }
-  a.btn_1.gray.delete:hover,
-  .btn_1.gray.delete:hover {
-    background: #dc3545;
-    color: #fff;
-  }
-  a.btn_1.medium,
-  .btn_1.medium {
-    padding: 12px 45px;
-    font-size: 16px;
-    font-size: 1rem;
-  }
-  a.btn_1:hover,
-  .btn_1:hover {
-    background: #007dab;
-    color: #fff;
-  }
-  
-  .btn-primary {
-    background-color: #007dab;
-    border-color: #007dab;
-  }
-  .btn-primary:hover {
-    background-color: #007dab;
-    border-color: #007dab;
-  }
-
 </style>
-
-<!-- Buat hapus row -->
-<!-- <script>
-      function dialogHapus(urlHapus,namanya){
-        if(confirm("Apakah anda yakin akan menghapus data " + namanya+" ?")){
-          alert("Oke konfirmasi penghapusan diberikan");
-          document.location=urlHapus;
-        }
-        else{
-          alert("Penghapusan dibatalkan");
-        }
-      }
-  </script>
-  
-  <script>
-function confirmDelete() {
-    if (confirm("Apakah Anda yakin ingin menghapus akun?")) {
-        // User confirmed deletion, proceed with AJAX request
-            window.location.href ="hapus_akun_user_partner.php"
-            //alert('OK');
-    } else {
-        // User clicked Cancel, do nothing
-        //alert('NO');
-        return false;
-    }
-}
-</script> -->
-
-<!-- Buat sortir -->
-<!-- <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-
-$(function() {
-  $("#myTableUtama").tablesorter({ sortList: [[0,0], [1,0]] });
-});
-</script> -->
-
 
 <body>
 
     <!-- Begin page -->
     <div id="layout-wrapper">
-        `
-
         <header id="page-topbar">
             <div class="navbar-header">
-
                 <div class="d-flex align-items-left">
-                    
                 </div>
-
                 <div class="d-flex align-items-center">
-                    
-
-                <div class="dropdown d-inline-block ml-2">
-                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="../../assets_dashboard/images/users/avatar-3.jpg"
-                                alt="Header Avatar">
-                            <span class="d-none d-sm-inline-block ml-1"></span>
+                    <div class="dropdown d-inline-block ml-2">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="../../assets_dashboard/images/users/avatar-3.jpg" alt="Header Avatar">
+                            <span class="d-none d-sm-inline-block ml-1"><?php echo htmlspecialchars($username); ?></span>
                             <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item d-flex align-items-center justify-content-between"
-                                href="akun.php">
-                                <span>Profil</span>
-                            </a>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between"
-                            href="logout.php">
+                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="logout.php">
                                 <span>Keluar</span>
                             </a>
                         </div>
@@ -187,7 +90,7 @@ $(function() {
         <!-- ========== Left Sidebar Start ========== -->
         <div class="vertical-menu">
             <div data-simplebar class="h-100">
-            <br>
+                <br>
                 <div class="navbar-brand-box">
                     <a href="dashboard_korwil.php" class="logo">
                         <img src="../../assets_dashboard/images/logoprofil.png" />
@@ -214,21 +117,17 @@ $(function() {
                         <li>
                             <a href="list_komentar_calek.php" class="waves-effect"><i class='bx bx-home-smile'></i><span>Komentar</span></a>
                         </li>
-                        <!-- <li>
-                            <a href="#" onclick="confirmDelete()"><i class='fa fa-trash'></i><span>Hapus Akun</span></a></a>
-                        </li> -->
                     </ul>
                 </div>
                 <!-- Sidebar -->
             </div>
         </div>
-        <!-- Left Sidebar End -->   
+        <!-- Left Sidebar End -->
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="main-content">
-
             <div class="page-content">
                 <div class="container-fluid">
 
@@ -236,97 +135,133 @@ $(function() {
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0 font-size-18">List Data Produk</h4>
-
+                                <h4 class="mb-0 font-size-18">Lihat Catatan Intelektual</h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item">Data Produk</li>
-                                        <li class="breadcrumb-item active">List Data Produk</li>
+                                        <li class="breadcrumb-item">Catatan Intelektual</a></li>
+                                        <li class="breadcrumb-item active">Lihat Catatan Intelektual</li>
                                     </ol>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                    <!-- end page title -->
+                </div>
 
-                    <!-- Buat search bar -->
-
-                    <!-- <p><p>
-                    Filter data : <input id="myInput" type="text" placeholder="Search.."> -->
-
-                    
+                <div style="overflow-x : scroll;">
                     <table class="table table-hover tablesorter" id="myTableUtama">
                         <thead>
-
                             <tr>
                                 <th>No.</th>
-                                <th style="width:150px;">Nama Toko</th>
-                                <th style="width:150px;">Nama Produk</th>
-                                <th style="width:50px;">Kategori</th>
-                                <th style="width:150px;">Deskripsi</th>
-                                <th>Harga</th>
-                                <th>Foto</th>                                
+                                <th>Nama Catatan Intelektual</th>
+                                <th style="width:150px;">Thumbnail</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody id="myTable">
-						
-							<tr>
-								<td>1</td>
-								<td>Nama Toko 1</td>
-								<td>Produk 1</td>
-								<td>Olahan Ikan</td>
-								<td>Deskripsi produk 1</td>
-								<td>10000</td>
-								<td><img src="images/foto1.jpg" width="100" height="100"></td>
-								<td>
-									<a href="update_datprod.php?id=1" class="btn_1">Ubah</a><br>
-									<a href="javascript:dialogHapus('hapus_datprod.php?id=1','Produk 1')" class="btn_1 gray">Hapus</a>
-								</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Nama Toko 2</td>
-								<td>Produk 2</td>
-								<td>Ikan Segar</td>
-								<td>Deskripsi produk 2</td>
-								<td>20000</td>
-								<td><img src="images/foto2.jpg" width="100" height="100"></td>
-								<td>
-									<a href="update_datprod.php?id=2" class="btn_1">Ubah</a><br>
-									<a href="javascript:dialogHapus('hapus_datprod.php?id=2','Produk 2')" class="btn_1 gray">Hapus</a>
-								</td>
-							</tr>
-                        
+                            <?php
+                            include '../../function/config.php'; // Pastikan ini berisi konfigurasi database dengan variabel $conn
+
+                            // Periksa apakah sesi username telah diset
+                            if (isset($_SESSION["username"])) {
+                                $username = $_SESSION["username"];
+
+                                // Query untuk mendapatkan id_login dari tabel login berdasarkan username
+                                $query_id_login = "SELECT id_login FROM login WHERE username='$username'";
+                                $result_id_login = $conn->query($query_id_login);
+
+                                if ($result_id_login->num_rows > 0) {
+                                    $row_id_login = $result_id_login->fetch_assoc();
+                                    $id_login = $row_id_login['id_login'];
+
+                                    // Query untuk mengambil catatan intelektual berdasarkan id_login
+                                    $sql = "SELECT id_calek, judul_calek, thumbnail_calek FROM calek WHERE id_login='$id_login'";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        $no = 1;
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<tr>";
+                                            echo "<td>" . $no++ . "</td>";
+                                            echo "<td>" . $row['judul_calek'] . "</td>";
+                                            echo "<td><img src='../../images/uploads/" . $row['thumbnail_calek'] . "' style='width: 100%; height: auto;'/></td>";
+                                            echo "<td><a href='edit_catatan.php?id=" . $row['id_calek'] . "' class='btn btn-warning btn-sm'>Edit</a> ";
+                                            echo "<a href='javascript:void(0)' onclick='confirmDeletion(" . $row['id_calek'] . ")' class='btn btn-danger btn-sm'>Hapus</a></td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='4'>Tidak ada data.</td></tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td colspan='4'>Tidak ada data.</td></tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='4'>Session username tidak tersedia.</td></tr>";
+                            }
+
+                            $conn->close();
+                            ?>
                         </tbody>
                     </table>
-        <!-- end main content-->
 
+                    <footer class="footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    2024 © Himapolindo.
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="text-sm-right d-none d-sm-block">
+                                        Design & Develop by Himapolindo
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <!-- end main content-->
+            </div>
+            <!-- END layout-wrapper -->
+            <!-- Overlay-->
+            <div class="menu-overlay"></div>
 
-    </div>
-    <!-- END layout-wrapper -->
+            <!-- jQuery  -->
+            <script src="../../assets_dashboard/js/jquery.min.js"></script>
+            <script src="../../assets_dashboard/js/bootstrap.bundle.min.js"></script>
+            <script src="../../assets_dashboard/js/metismenu.min.js"></script>
+            <script src="../../assets_dashboard/js/waves.js"></script>
+            <script src="../../assets_dashboard/js/simplebar.min.js"></script>
 
-    <!-- Overlay-->
-    <div class="menu-overlay"></div>
+            <!-- SweetAlert2 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+            <!-- Morris Js-->
+            <script src="../../plugins/morris-js/morris.min.js"></script>
+            <!-- Raphael Js-->
+            <script src="../../plugins/raphael/raphael.min.js"></script>
 
-    <!-- jQuery  -->
-    <script src="../../assets_dashboard/js/jquery.min.js"></script>
-    <script src="../../assets_dashboard/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets_dashboard/js/metismenu.min.js"></script>
-    <script src="../../assets_dashboard/js/waves.js"></script>
-    <script src="../../assets_dashboard/js/simplebar.min.js"></script>
+            <!-- Morris Custom Js-->
+            <script src="../../assets_dashboard/pages/dashboard-demo.js"></script>
 
-    <!-- Morris Js-->
-    <script src="../../plugins/morris-js/morris.min.js"></script>
-    <!-- Raphael Js-->
-    <script src="../../plugins/raphael/raphael.min.js"></script>
-
-    <!-- Morris Custom Js-->
-    <script src="../../assets_dashboard/pages/dashboard-demo.js"></script>
-
-    <!-- App js -->
-    <script src="../../assets_dashboard/js/theme.js"></script>
+            <!-- App js -->
+            <script src="../../assets_dashboard/js/theme.js"></script>
+            <script>
+                function confirmDeletion(id) {
+                    Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Data yang dihapus tidak dapat dikembalikan!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya, hapus!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'hapus_calek.php?id=' + id;
+                        }
+                    })
+                }
+            </script>
+</body>
 
 </html>
